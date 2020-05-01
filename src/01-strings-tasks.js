@@ -254,10 +254,9 @@ function encodeToRot13(str) {
  *   isString('test') => true
  *   isString(new String('test')) => true
  */
-function isString(/* value */) {
-  throw new Error('Not implemented');
+function isString(value) {
+  return value ? (typeof value.valueOf() === 'string') : false;
 }
-
 
 /**
  * Returns playid card id.
@@ -283,8 +282,25 @@ function isString(/* value */) {
  *   'Q♠' => 50
  *   'K♠' => 51
  */
-function getCardId(/* value */) {
-  throw new Error('Not implemented');
+function getCardId(value) {
+  const num = {
+    A: 0,
+    J: 10,
+    Q: 11,
+    K: 12,
+    1: 9,
+    '♣': 0,
+    '♦': 13,
+    '♥': 26,
+    '♠': 39,
+  };
+
+  if (Number(value[0]) > 1) {
+    return (Number(value[0]) - 1) + num[value[1]];
+  } if (value.length > 2) {
+    return num[value[0]] + num[value[2]];
+  }
+  return num[value[0]] + num[value[1]];
 }
 
 
