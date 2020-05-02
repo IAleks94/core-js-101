@@ -238,12 +238,7 @@ function isPrime(n) {
  */
 function toNumber(value, def) {
   if (+value) {
-    if (typeof +value === 'number') {
-      return +value;
-    }
-    if (+value.valueOf()) {
-      return +value.valueOf();
-    }
+    return +value;
   }
   return def;
 }
