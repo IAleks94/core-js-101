@@ -212,8 +212,13 @@ function roundToPowerOfTen(num, exp) {
  *   16 => false
  *   17 => true
  */
-function isPrime(/* n */) {
-  throw new Error('Not implemented');
+function isPrime(n) {
+  const primeArr = [2, 3, 5, 7, 11];
+  const answer = primeArr.map((item) => n % item);
+  if (primeArr.includes(n)) {
+    return true;
+  }
+  return !answer.includes(0);
 }
 
 /**
@@ -231,10 +236,18 @@ function isPrime(/* n */) {
  *   toNumber(42, 0) => 42
  *   toNumber(new Number(42), 0) => 42
  */
-function toNumber(/* value, def */) {
-  throw new Error('Not implemented');
+function toNumber(value, def) {
+  if (+value) {
+    if (typeof +value === 'number') {
+      return +value;
+    }
+    if (+value.valueOf()) {
+      return +value.valueOf();
+    }
+  }
+  return def;
 }
-
+console.log(toNumber(NaN, 11));
 module.exports = {
   getRectangleArea,
   getCicleCircumference,
