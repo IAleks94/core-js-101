@@ -242,7 +242,7 @@ function toNumber(value, def) {
   }
   return def;
 }
-console.log(toNumber(NaN, 11));
+
 module.exports = {
   getRectangleArea,
   getCicleCircumference,
