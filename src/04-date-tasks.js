@@ -117,29 +117,15 @@ function timeSpanToString(startDate, endDate) {
  *    Date.UTC(2016,3,5,21, 0) => Math.PI/2
  */
 function angleBetweenClockHands(date) {
-  console.log('date: ', date);
-  let hour = date.getUTCHours();
-  console.log('hour: ', hour);
+  const hour = date.getUTCHours() % 12;
   const minutes = date.getMinutes();
-  if (hour > 11) {
-    hour -= 12;
-    if (hour > 9) {
-      hour -= 12;
-      hour *= -1;
-    }
-  } if (hour > 6) {
-    hour -= 6;
-    console.log('hour: ', hour);
+  let deg = 0.5 * (hour * 60 - minutes * 11);
+  if (Math.abs(deg) > 180) {
+    deg = 360 - Math.abs(deg);
   }
-  const deg = hour * 30 - minutes * 5.5;
-  console.log('hour: ', hour);
-  console.log('minutes: ', minutes);
   const rad = deg * (Math.PI / 180);
-  console.log('rad: ', rad);
   return Math.abs(rad);
 }
-console.log(Math.asin(0));
-console.log('Math.acosh(x): ', Math.asinh(1.5707963267948966));
 
 
 module.exports = {
