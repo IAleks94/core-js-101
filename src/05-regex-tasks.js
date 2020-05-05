@@ -1,3 +1,4 @@
+/* eslint-disable no-useless-escape */
 /* *******************************************************************************************
  *                                                                                           *
  * Plese read the following tutorial before implementing tasks:                              *
@@ -32,9 +33,8 @@
  * @return {RegExp}
  */
 function getRegexForGuid() {
-  throw new Error('Not implemented');
+  return /{[\da-f]{8}-[\da-f]{4}-[\da-f]{4}-[\da-f]{4}-[\da-f]{12}}/i;
 }
-
 
 /**
  * Returns the regexp that matches all the strings from first column
@@ -54,9 +54,8 @@ function getRegexForGuid() {
  *
  */
 function getRegexForPitSpot() {
-  throw new Error('Not implemented');
+  return /p.t/;
 }
-
 
 /**
  * Returns the password validator regex.
@@ -78,8 +77,9 @@ function getRegexForPitSpot() {
  *   'PASSW0RD'.match(validator)  => false
  *   'Pa55'.match(validator) => false
  */
-function getPasswordValidator(/* minLength */) {
+function getPasswordValidator(minLength) {
   throw new Error('Not implemented');
+  // return `/[^\s\d\w]{${minLength},}/`;
 }
 
 
